@@ -23,6 +23,18 @@ def chat():
     return jsonify({"response": response})
 
 
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    user = firebase_auth.register_user(email, password)
+
+    if "uid" in user:
+        return jsonify({"message": "Registration successful", "uid": user["uid"]})
+    else:
+        return jsonify({"error": user["error"]}), 400
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -31,22 +43,11 @@ def login():
     password = data.get('password')
 
     user = firebase_auth.login_user(email, password)
-    if user:
-        return jsonify({"message": "Login successful", "uid": user["uid"]})
-    return jsonify({"error": "Invalid credentials"}), 401
 
-
-
-@app.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    email = data.get('email')
-    password = data.get('password')
-
-    user = firebase_auth.register_user(email, password)
-    if user:
-        return jsonify({"message": "Registration successful", "uid": user["uid"]})
-    return jsonify({"error": "Registration failed"}), 400
+    if "uid" in user:
+        return jsonify({"message": "Login successful", "uid": user["uid"], "token": user["idToken"]})
+    else:
+        return jsonify({"error": user["error"]}), 401
 
 if __name__ == '__main__':
     app.run(debug=True)
