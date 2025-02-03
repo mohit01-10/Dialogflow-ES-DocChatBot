@@ -1,0 +1,6 @@
+Flask
+Flask-CORS
+firebase-admin
+google-auth
+google-auth-oauthlib
+google-cloud-dialogflow
