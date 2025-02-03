@@ -1,0 +1,2 @@
+Create a json file name it accorindly and add firebase credentials.
+Similarly make another json file for service account credentials. 
