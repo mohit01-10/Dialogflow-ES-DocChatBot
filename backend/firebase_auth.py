@@ -21,16 +21,6 @@
 
 # cred = credentials.Certificate("config/firebase-client.json")
 
-# firebase_config = {
-#     "apiKey": "AIzaSyD82aXjoO5K4cesQ2o6jH38tcUOAtMdaYo",
-#     "authDomain": "documentchatbotv1.firebaseapp.com",
-#     "databaseURL": "https://documentchatbotv1-default-rtdb.asia-southeast1.firebasedatabase.app",
-#     "projectId": "documentchatbotv1",
-#     "storageBucket": "documentchatbotv1.firebasestorage.app",
-#     "messagingSenderId": "538226760356",
-#     "appId": "1:538226760356:web:dcba8bc149bd08def4a431",
-#     "measurementId": "G-7L4MEN20XT"
-# }
 
 import pyrebase
 from firebase_admin import credentials
